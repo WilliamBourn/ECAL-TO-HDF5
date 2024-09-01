@@ -11,7 +11,7 @@ import glob
 import cv2
     
 
-def convert(path_to_folder,group_handle, channel_name="rt/camera/camera/depth/image_rect_raw"):
+def convert(path_to_folder,group_handle, channel_name="rt/camera/depth/image_rect_raw"):
 
     print("CONVERTING ECAL REALSENSE DEPTH MEASUREMENT TO HDF5:")
     working_dir = os.path.dirname(__file__)
