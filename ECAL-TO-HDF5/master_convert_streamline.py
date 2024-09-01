@@ -20,7 +20,7 @@ def get_channel_names(path_to_folder):
     channel_names = measurements.get_channel_names()
     return channel_names
 
-def master_convert(dir, measurement, username, file, config, overwrite):
+def master_convert(dir, measurement, username, filename, config, overwrite):
 
     print("ECAL TO HDF5 CONVERSION:")
     print()
@@ -44,14 +44,16 @@ def master_convert(dir, measurement, username, file, config, overwrite):
         data = file.read()  
 
     print("Creating output file")
+    print(dir)
+    print(filename)
     try:
         if overwrite == True:
-            out_file = h5py.File(os.path.join(dir, file),'w')
+            out_file = h5py.File(os.path.join(dir, filename),'w')
         else:
-            out_file = h5py.File(os.path.join(dir, file),'x')
+            out_file = h5py.File(os.path.join(dir, filename),'x')
     except:
                 
-        print("Passing " + measurement + " because " + file + " already exists.\n")
+        print("Passing " + measurement + " because " + filename + " already exists.\n")
         return
 
     commentGrp = out_file.create_group("Comments")
